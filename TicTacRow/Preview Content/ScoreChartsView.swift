@@ -18,7 +18,7 @@ struct ChartData: Identifiable, Hashable{
 struct ScoreChartsView: View {
     
     @State public var showSheet: Bool = false // BottomSheet is showing variable
-    var testvar = ContentView() // Importing variables from ContentView()
+    let testvar = ContentView() // Importing variables from ContentView()
     var columncolor: Color = .green
 
 // Difference between yesterday's score trend and today's one
