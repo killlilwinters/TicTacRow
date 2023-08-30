@@ -9,46 +9,46 @@ import SwiftUI
 
 
 struct ContentView: View {
-
-// Check if the game is played at a new day
+    
+    // Check if the game is played at a new day
     func isNewDay() -> Bool {
         let defaults = UserDefaults.standard
         let now = Date()
         if let savedDate = defaults.object(forKey: "currentDate") as? Date,
            Calendar.current.compare(savedDate, to: now, toGranularity: .day) == .orderedSame {
             print("Same day")
-                   return false
-               }
-               defaults.set(now, forKey: "currentDate")
-            print("New day")
-               return true
-           }
-// Scores:
-        @AppStorage("SCORE_KEY") var score: Int = 100
-        @AppStorage("TREND_KEY") var todaysTrend = 0
-        @AppStorage("YTREND_KEY") var yesterdaysTrend = 0
-// Playing field shapes
-        @State var tile: String = "o.circle"
-        @State var tile1: String = "o.circle"
-        @State var tile2: String = "o.circle"
-// Randomizer variables
-        @State var random: Int = 0
-        @State var random1: Int = 0
-        @State var random2: Int = 0
-// "You won!!!" text opacity variable
-        @State var opacity: Double = 0
-// Disabling button after press variable
-        @State var buttonisDisabled = false
-// ChartsButton default state
-        @State var chartsButton = "chart.line.flattrend.xyaxis.circle.fill"
-        @State var chartsButtonColor: Color = .blue
+            return false
+        }
+        defaults.set(now, forKey: "currentDate")
+        print("New day")
+        return true
+    }
+    // Scores:
+    @AppStorage("SCORE_KEY") var score: Int = 100
+    @AppStorage("TREND_KEY") var todaysTrend = 0
+    @AppStorage("YTREND_KEY") var yesterdaysTrend = 0
+    // Playing field shapes
+    @State var tile: String = "o.circle"
+    @State var tile1: String = "o.circle"
+    @State var tile2: String = "o.circle"
+    // Randomizer variables
+    @State var random: Int = 0
+    @State var random1: Int = 0
+    @State var random2: Int = 0
+    // "You won!!!" text opacity variable
+    @State var opacity: Double = 0
+    // Disabling button after press variable
+    @State var buttonisDisabled = false
+    // ChartsButton default state
+    @State var chartsButton = "chart.line.flattrend.xyaxis.circle.fill"
+    @State var chartsButtonColor: Color = .blue
     
-
-// Play action after pressing "Play!"
+    
+    // Play action after pressing "Play!"
     func playAction(){
-//Disabling "Play!" button
+        //Disabling "Play!" button
         buttonisDisabled = true
-//Randomizing
+        //Randomizing
         random = Int.random(in: 0...1)
         random1 = Int.random(in: 0...1)
         random2 = Int.random(in: 0...1)
@@ -77,8 +77,8 @@ struct ContentView: View {
         default:
             tile2 = "o.circle"
         }
-
-// Win/lose state determination
+        
+        // Win/lose state determination
         if random + random1 + random2 == 3{
             opacity = 100
             self.score += 100
@@ -105,8 +105,8 @@ struct ContentView: View {
             chartsButtonColor = .green
         }
         print(random, random1, random2)
-
-//  Enabling "Play!" button after 1 second
+        
+        //  Enabling "Play!" button after 1 second
         DispatchQueue.main.asyncAfter(deadline: .now() + 1.0){
             buttonisDisabled = false
         }
@@ -146,14 +146,14 @@ struct ContentView: View {
                             Image(systemName: chartsButton)
                         } .frame(width: 1)
                             .foregroundStyle(chartsButtonColor)
-
-                            Text("Trend: \(todaysTrend)")
-                                .frame(width: 100, height: 20)
+                        
+                        Text("Trend: \(todaysTrend)")
+                            .frame(width: 100, height: 20)
                     }
                 } .padding(10)
-              
+                
                 Text("Yesterday: \(yesterdaysTrend)")
-           
+                
                 Spacer()
                 HStack{
                     
@@ -195,7 +195,7 @@ struct ContentView: View {
                 }       .buttonStyle(.borderedProminent)
                     .cornerRadius(30)
                     .disabled(buttonisDisabled)
-
+                
             }
         }
     }
