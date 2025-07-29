@@ -1,8 +1,9 @@
-# TikTacRow iOS Swift Game.
-## 1. About
 <div align="center">
 <img src="https://github.com/user-attachments/assets/72b9ad91-e962-4f21-a0e1-a4bf1a31729f" alt="TicTacRowIcon" width="30%">
 </div>
+
+# TikTacRow iOS Swift Game.
+## 1. About
 
 TicTacRow is a simple, begginer-friendly game built using Apple's cutting-edge tools. In this game the player has to score a 3-in-a-row of any symbols to get himself 100 points of score, otherwise they lose -25 points. The game features simple and easy to understand chart system, where the player can see his progress in recent days and analyze their statistics, if the player looses - the game ends, to restart press a "restore button" near "Score:" label.
 
